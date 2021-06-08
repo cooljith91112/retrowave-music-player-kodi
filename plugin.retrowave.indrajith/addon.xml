@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.vaporwave.indrajith" name="Indrajith's Retroplayer" provider-name="Indrajith K L" version="0.0.1">
+	<requires>
+		<import addon="xbmc.python" version="3.0.0"/>
+		<import addon="script.module.requests" version="2.9.1"/>
+		<import addon="script.module.web-pdb" />
+	</requires>
+	<extension library="addon.py" point="xbmc.python.pluginsource">
+		<provides>audio</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en_gb">Listen to Synthwave, Vaporwave Musics</summary>
+		<description lang="en_gb"/>
+		<disclaimer lang="en_gb"/>
+		<language/>
+		<platform>all</platform>
+		<license/>
+		<forum/>
+		<website/>
+		<email/>
+		<source/>
+		<news>
+			v0.0.1 (2021-08-06)
+			- Initial release
+		</news>
+		<assets>
+			<icon>resources/icon.png</icon>
+		</assets>
+	</extension>
+	<extension point="xbmc.addon.repository">
+		<info></info>
+		<checksum></checksum>
+		<datadir zip="true"></datadir>
+	</extension>
+</addon>
