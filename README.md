@@ -1,6 +1,6 @@
 <h1 align="center"> Kodi Synthwave Music Player</h1>
 <p align="center">
-  <img src="resources/icon.png" alt="lul-bot-logo" width="120px" height="120px"/>
+  <img src="plugin.retrowave.indrajith/resources/icon.png" alt="lul-bot-logo" width="120px" height="120px"/>
   <br>
   <i>A Music Player addon written for Kodi/XBMC TV Streaming Software</i>
   <br>
