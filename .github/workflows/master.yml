@@ -21,24 +21,13 @@ jobs:
     - uses: paulhatch/semantic-version@v4.0.2
       id: version_name
       with:
-        # The prefix to use to identify tags
         tag_prefix: "v"
-        # A string which, if present in a git commit, indicates that a change represents a
-        # major (breaking) change, supports regular expressions wrapped with '/'
         major_pattern: "(MAJOR)"
-        # Same as above except indicating a minor change, supports regular expressions wrapped with '/'
         minor_pattern: "(MINOR)"
-        # A string to determine the format of the version output
         format: "${major}.${minor}.${patch}-prerelease${increment}"
-        # Optional path to check for changes. If any changes are detected in the path the
-        # 'changed' output will true. Enter multiple paths separated by spaces.
         change_path: "./"
-        # Named version, will be used as suffix for name version tag
-        namespace: project-b
-        # Indicate whether short tags like 'v1' should be supported. If false only full
-        # tags like 'v1.0.0' will be recognized.
+        namespace: retrowave
         short_tags: true
-        # If this is set to true, *every* commit will be treated as a new version.
         bump_each_commit: false
     - uses: "marvinpinto/action-automatic-releases@latest"
       id: create_release
@@ -49,6 +38,11 @@ jobs:
         title: "Development Build"
         files: |
           *.zip
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        REPO_OWNER: cooljith91112
     - name: Release
       uses: softprops/action-gh-release@v1
       if: startsWith(github.ref, 'refs/tags/')
@@ -56,17 +50,3 @@ jobs:
           files: plugin.retrowave.indrajith.zip
       env:
         GITHUB_TOKEN: ${{ secrets.TOKEN }}
-    # - name: upload zip release
-    #   uses: actions/upload-release-asset@v1
-    #   env:
-    #     GITHUB_TOKEN: ${{ github.token }}
-    #   with:
-    #     upload_url: ${{ steps.create_release.outputs.upload_url }}
-    #     asset_path: ./plugin.retrowave.indrajith.zip
-    #     asset_name: plugin.retrowave.indrajith.zip
-    #     asset_content_type: application/gzip
-    - name: Bump version and push tag
-      uses: anothrNick/github-tag-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
-        REPO_OWNER: cooljith91112
